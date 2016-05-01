@@ -15,7 +15,9 @@ Projector::Projector(std::string name, Location location, Orientation orientatio
 	: Object(PROJECTOR, name, location, orientation, color), my_radius(radius), my_scanner_angle(scanner_angle), my_frame(0)
 {
 	Scanner_Half_Size = 32768.0;
-	my_adj_point_angle = my_scanner_angle / Scanner_Half_Size;
+	// TODO : This assumes that scanner angle means the full angle beteween the scanner extents
+	// as opposed to the angle in both directions away from origin (which would double the scanner angle)
+	my_adj_point_angle = my_scanner_angle / 2 / Scanner_Half_Size;
 	my_frame = 0;
 	my_net_orientation = new NetOrientation(this);
 }
@@ -41,14 +43,14 @@ void Projector::project()
 	{
 		// The pitch angle in degrees between this ILDAPoint and the projector center
 		// Positive values are above the center, negative values are below the center
-		double relative_pitch = point_iter->x * my_adj_point_angle;
+		double relative_pitch = point_iter->y * my_adj_point_angle;
 
 		// The pitch angle in degrees between level pitch (facing directly forward) and this ILDAPoint
 		double absolute_pitch = my_orientation.pitch + relative_pitch;
 
 		// The pitch angle in degrees between this ILDAPoint and the projector center
 		// Positive values are above right of the center, negative values are left of the center
-		double relative_yaw = point_iter->y * my_adj_point_angle;
+		double relative_yaw = point_iter->x * my_adj_point_angle;
 
 		// The pitch angle in degrees between level pitch (facing directly forward) and this ILDAPoint
 		double absolute_yaw = my_orientation.yaw + relative_yaw;

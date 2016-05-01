@@ -66,21 +66,26 @@ int main() {
 		// Add ILDAPoints to the frame
 		frame->push_back(ILDAPoint(0, 0));
 
-		frame->push_back(ILDAPoint(32767, 32767));
-		frame->push_back(ILDAPoint(32767, -32768));
 		frame->push_back(ILDAPoint(-32768, -32768));
-		frame->push_back(ILDAPoint(-32768, 32767));
+		frame->push_back(ILDAPoint(32677, 32767));
+		frame->push_back(ILDAPoint(32677, -32768));
+		frame->push_back(ILDAPoint(-32678, 32767));
 
-		frame->push_back(ILDAPoint(10000, 2000));
-		frame->push_back(ILDAPoint(-1000, -3000));
-		frame->push_back(ILDAPoint(32000, 2700));
-		frame->push_back(ILDAPoint(-3200, 0));
-		frame->push_back(ILDAPoint(-10000, 0));
-		frame->push_back(ILDAPoint(35000, 1000));
-		frame->push_back(ILDAPoint(-1000, 1000));
-		frame->push_back(ILDAPoint(3200, 32000));
-		frame->push_back(ILDAPoint(-3200, 10000));
-		frame->push_back(ILDAPoint(-1000, 30200));
+		//frame->push_back(ILDAPoint(32767, 32767));
+		//frame->push_back(ILDAPoint(32767, -32768));
+		//frame->push_back(ILDAPoint(-32768, -32768));
+		//frame->push_back(ILDAPoint(-32768, 32767));
+
+		//frame->push_back(ILDAPoint(10000, 2000));
+		//frame->push_back(ILDAPoint(-1000, -3000));
+		//frame->push_back(ILDAPoint(32000, 2700));
+		//frame->push_back(ILDAPoint(-3200, 0));
+		//frame->push_back(ILDAPoint(-10000, 0));
+		//frame->push_back(ILDAPoint(35000, 1000));
+		//frame->push_back(ILDAPoint(-1000, 1000));
+		//frame->push_back(ILDAPoint(3200, 32000));
+		//frame->push_back(ILDAPoint(-3200, 10000));
+		//frame->push_back(ILDAPoint(-1000, 30200));
 
 		// Feed the ILDAFrame to the Scene's projector
 		scene.projector()->net_orientation()->refresh();
